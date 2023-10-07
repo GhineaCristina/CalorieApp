@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="static/meniu.css">
+</head>
+<body>
+<h2>Menu</h2>
+
+<form action="/meniu" method="post">
+    <p>Click the button below to generate a menu based on the calories obtained.</p>
+    <br>
+    {{mealsform.button}}
+    <br>
+    {% if result==True %}
+    <h3>Breakfast: {{breakfast}},
+        Calories: {{breakfast_k}}</h3>
+    <h3>Snack: {{snack1}},
+        Calories: {{snack1_k}}</h3>
+    <h3>Lunch: {{lunch}},
+        Calories: {{lunch_k}}</h3>
+    <h3>Snack: {{snack2}},
+        Calories: {{snack2_k}}</h3>
+    <h3>Dinner: {{dinner}},
+        Calories: {{dinner_k}}</h3>
+    {% endif %}
+</form>
+</body>
+</html>

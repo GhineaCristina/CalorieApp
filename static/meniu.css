@@ -1,0 +1,23 @@
+h2 {
+    color: black;
+    text-align: center;
+    font-size: 50px;
+}
+
+input[type=submit]{
+    width: 50%;
+    background-color: YellowGreen;
+    color: Green;
+    padding: 12px 12px;
+    border: none;
+    border-radius: 6px;
+    margin: 10px auto;
+    display: block;
+
+}
+
+body {
+    background-image: url('img2.jpg');
+    background-size: cover;
+    color: Black;
+    text-align: center;
