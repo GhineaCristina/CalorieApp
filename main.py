@@ -8,12 +8,19 @@ from caloric_meals import Meals
 app = Flask(__name__)
 
 class HomePage(MethodView):
+    """
+    Defines a view for the homepage of the Calories App.
+    It is responsible for rendering the initial page when a user visits the app."""
 
     def get(self):
         return render_template('index.html')
 
 
 class CaloriesFormPage(MethodView):
+    """
+    Defines a view for the page where the user can input their information,
+    such as weight, height, age, city, and country. It handles both the form rendering and submission to calculate
+    the user's calorie needs based on the provided data and location's temperature."""
 
     def get(self):
         calories_form =CaloriesForm()
@@ -38,6 +45,10 @@ class CaloriesFormPage(MethodView):
                                calories=calories)
 
 class CaloriesForm(Form):
+    """
+     Defines a form for collecting user information,including weight, height, etc.
+     It is used in the CaloriesFormPage to capture user input."""
+
     weight=StringField("Weight: ", default=70)
     height=StringField("Height: ", default=175)
     age=StringField("Age: ", default=32)
@@ -47,12 +58,19 @@ class CaloriesForm(Form):
 
 
 class Result(MethodView):
+    """
+    This class defines a view for displaying the result of the calorie calculation.
+    It renders a page with the calculated calories and user input."""
+
     def get(self):
         return render_template('result.html')
 
 
-
 class MealsFormPage(MethodView):
+    """
+     Defines a view for the page where the user can generate a menu based on their calculated calorie needs.
+     It handles both the form rendering and submission to display a menu to the user."""
+
     def get(self):
         meals_form = MealsForm()
         return render_template('meniu.html', mealsform=meals_form, calories=calories)
@@ -78,9 +96,13 @@ class MealsFormPage(MethodView):
                                mealsform=meals_form, result=True)
 
 
-
 class MealsForm(Form):
+    """
+    This class defines a form for generating a menu based on the user's calorie needs.
+    It is used in the MealsFormPage to allow the user to request a menu."""
+
     button = SubmitField("Generate Menu")
+
 
 app.add_url_rule('/',
                  view_func=HomePage.as_view('home_page'))
